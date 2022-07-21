@@ -1,9 +1,10 @@
 const express =  require("express");
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3001;
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
 dotenv.config();
+const app = express();
 
 mongoose.connect(
    process.env.MONGO_URL
@@ -11,7 +12,10 @@ mongoose.connect(
     console.log(err)
 });
 
-const app = express();
+app.get("/api/test",() => {
+    console.log("test is successfull")
+});
+
 
 app.listen(PORT,()=>{
     console.log(`Express server listening on port: ${PORT}`);
